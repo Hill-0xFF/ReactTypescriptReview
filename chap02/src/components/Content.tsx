@@ -1,28 +1,34 @@
 /* eslint-disable react/jsx-one-expression-per-line */
+import { useEffect, useState } from 'react';
+
 const Content = () => {
+  const [name, setName] = useState<string | 'user'>();
+  const [count, setCount] = useState<number>(0);
+
+  useEffect(() => {
+    handleNameChange();
+  }, []);
   const handleNameChange = () => {
     const arrNames: string[] = ['Ada', 'Bob', 'Clark'];
     const index: number = Math.floor(Math.random() * arrNames.length);
-    return arrNames[index];
-  };
-
-  const handleClick = (): void => {
-    console.log('You clicked!');
+    setName(arrNames[index]);
   };
 
   const handleClick2 = (
     evt: React.MouseEvent<HTMLButtonElement>,
-    name: string
+    name: string | undefined
   ): void => {
-    console.log(`${name} clicked button <${evt.currentTarget.innerText}>!`);
+    setCount(count + 1);
+    console.log(
+      `${name} clicked button <${evt.currentTarget.innerText}>!\nCount: ${count}`
+    );
   };
 
-  const name: string = handleNameChange();
   return (
     <div>
-      <main>Hello, {handleNameChange()}!</main>
+      <main>Hello, {name}!</main>
       <p>
-        <button onClick={handleClick}>Click</button>
+        <button onClick={handleNameChange}>Change Name</button>
       </p>
       <p>
         <button onClick={(evt) => handleClick2(evt, name)}>Click</button>
