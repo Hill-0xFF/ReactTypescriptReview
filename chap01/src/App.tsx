@@ -1,10 +1,17 @@
 import './App.css';
+import Content from './components/Content';
+import Footer from './components/Footer';
+import Header from './components/Header';
+
+import './css/styles.css';
 
 function App() {
   return (
-    <>
-      <h1>The skies is above me</h1>
-    </>
+    <div className="App">
+      <Header />
+      <Content />
+      <Footer />
+    </div>
   );
 }
 
