@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import { useState } from 'react';
+import { FaTrashAlt } from 'react-icons/fa';
 
 import { T_ContentItem } from '@/types/content.type';
 
@@ -30,7 +31,9 @@ const Content = () => {
             <li className="item" key={item.id}>
               <input type="checkbox" checked={item.checked} />
               <label>{item.item}</label>
-              <button>Delete</button>
+              <button>
+                <FaTrashAlt key={item.id} />
+              </button>
             </li>
           ))}
         </ul>
