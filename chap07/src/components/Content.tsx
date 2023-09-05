@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import { useState } from 'react';
-import { FaTrashAlt } from 'react-icons/fa';
+import { FaTrashAlt, FaCheckCircle } from 'react-icons/fa';
 
 import { T_ContentItem } from '@/types/content.type';
 
@@ -29,8 +29,15 @@ const Content = () => {
         <ul>
           {items.map((item) => (
             <li className="item" key={item.id}>
-              <input type="checkbox" checked={item.checked} />
-              <label>{item.item}</label>
+              <input
+                type="checkbox"
+                checked={item.checked}
+                onChange={() => console.log('Input: changed')}
+              />
+              <label>
+                <FaCheckCircle>{item.item}</FaCheckCircle>
+              </label>
+
               <button>
                 <FaTrashAlt key={item.id} />
               </button>
